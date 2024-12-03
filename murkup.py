@@ -18,8 +18,9 @@ button_adminpanel = telebot.types.InlineKeyboardButton(text="АДМИН ПАНЕ
 keyboard3 = telebot.types.ReplyKeyboardMarkup(resize_keyboard=True).add(button_save_admin, button_save1_admin).add(button_adminpanel)
 
 #админ панель----------------------------------------------------------------------------------------------
-exceel_file_get = telebot.types.InlineKeyboardButton(text="получить таблицы")
-add_event = telebot.types.InlineKeyboardButton(text="добавить мероприятие")
-keyboard4 = telebot.types.ReplyKeyboardMarkup(resize_keyboard=True).add(exceel_file_get)
+button_back1 = telebot.types.InlineKeyboardButton(text="НАЗАД")
+exceel_file_get = telebot.types.InlineKeyboardButton(text="ПОЛУЧИТЬ ТАБЛИЦЫ")
+add_event = telebot.types.InlineKeyboardButton(text="ДОБАВИТЬ МЕРОПРИЯТИЕ")
+keyboard4 = telebot.types.ReplyKeyboardMarkup(resize_keyboard=True).add(button_back1, exceel_file_get, add_event)
 
 #выбор мероприятия------------------------------------------------------------------------------------
