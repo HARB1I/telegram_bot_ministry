@@ -85,7 +85,7 @@ def bot_message(message):
             if message.text == "89677156771":
                 db.set_is_admin(message.chat.id, True)
                 panel(message.chat.id, "Вы стали админом")
-                db.set_signup_admin(chat_id, "setadminpassword")
+                db.set_signup_admin(message.chat.id, "setadminpassword")
             else:
                 db.set_signup_admin(message.chat.id, "setadminpassword")
                 panel(message.chat.id, "Пароль неверный")
