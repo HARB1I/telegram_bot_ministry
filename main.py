@@ -168,7 +168,6 @@ def bot_message(message):
                 bot.send_message(message.chat.id, "отзыв должен быть менее 1000 символов")
             else: 
                 event = db.get_n_content(message.chat.id)
-                print(event)
                 db.add_content(message.chat.id, event, message.text)
                 db.set_is_content(message.chat.id, False)
                 panel(message.chat.id, "отзыв успешно сохранен")
@@ -240,7 +239,6 @@ def save_btn(call):
 
    elif call.data.split('|')[0] == 'user_events':
        event = db.get_topic_id(call.data.split('|')[1])
-       print(event, call.data.split('|')[1])
        db.set_is_content(message.chat.id, True)
        db.set_n_content(message.chat.id, event)
        bot.send_message(message.chat.id, 'напишите отзыв о мероприятии')
