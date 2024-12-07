@@ -4,7 +4,7 @@ from telebot import types
 import murkup as nav
 import pandas as pd
 from keyboa.keyboard import Keyboa
-from config import Token
+from config import Token, Admin_Password
 import sqlite3
 import os
 
@@ -177,7 +177,7 @@ def bot_message(message):
 
         elif db.get_signup_admin(message.chat.id) == "installation":
 
-            if message.text == "89677156771":
+            if message.text == Admin_Password:
                 db.set_is_admin(message.chat.id, True)
                 panel(message.chat.id, "Вы стали админом")
                 db.set_signup_admin(message.chat.id, "setadminpassword")
