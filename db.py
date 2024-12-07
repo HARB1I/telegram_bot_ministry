@@ -58,3 +58,59 @@ class Database:
     def set_signup_admin(self, user_id, is_admin):
         with self.connection:
             return self.cursor.execute("UPDATE users SET signup_admin = ? WHERE user_id = ?",(is_admin, user_id,))
+
+    def get_topic_title(self):
+        with self.connection:
+            return self.cursor.execute("SELECT title FROM topic").fetchall()
+
+    def get_topic_id(self, title):
+        with self.connection:
+            result = self.cursor.execute("SELECT topic_id FROM topic WHERE title = ?", (title,)).fetchall()
+            for row in result:
+                id = str(row[0])
+            return id
+
+    def add_topic_title(self, title):
+        with self.connection:
+            return self.cursor.execute("INSERT INTO topic (title) VALUES (?)", (title,))
+
+    def add_content(self, user_id, topic_id, content):
+        with self.connection:
+            return self.cursor.execute("INSERT INTO replies (user_id, topic_id, content) VALUES (?,?,?)", (user_id, topic_id, content))
+
+    def delete_topic(self, topic_id):
+        with self.connection:
+            return self.cursor.execute("DELETE FROM topic WHERE topic_id = ?", (topic_id,))
+
+    def get_flag_add_topic(self, user_id):
+        with self.connection:
+            result = self.cursor.execute("SELECT flag_add_topic FROM users WHERE user_id = ?", (user_id,)).fetchall()
+            for row in result:
+                admin = str(row[0])
+            return admin
+
+    def set_flag_add_topic(self, user_id, flag_add_topic):
+        with self.connection:
+            return self.cursor.execute("UPDATE users SET flag_add_topic = ? WHERE user_id = ?",(flag_add_topic, user_id,))
+
+    def get_is_content(self, user_id):
+        with self.connection:
+            result = self.cursor.execute("SELECT is_content FROM users WHERE user_id = ?", (user_id,)).fetchall()
+            for row in result:
+                admin = str(row[0])
+            return admin
+
+    def set_is_content(self, user_id, is_content):
+        with self.connection:
+            return self.cursor.execute("UPDATE users SET is_content = ? WHERE user_id = ?",(is_content, user_id,))
+
+    def get_n_content(self, user_id):
+        with self.connection:
+            result = self.cursor.execute("SELECT n_content FROM users WHERE user_id = ?", (user_id,)).fetchall()
+            for row in result:
+                admin = str(row[0])
+            return admin
+
+    def set_n_content(self, user_id, n_content):
+        with self.connection:
+            return self.cursor.execute("UPDATE users SET n_content = ? WHERE user_id = ?",(n_content, user_id,))
