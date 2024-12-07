@@ -4,10 +4,11 @@ from telebot import types
 import murkup as nav
 import pandas as pd
 from keyboa.keyboard import Keyboa
+from config import Token
 import sqlite3
 import os
 
-bot = telebot.TeleBot("7529867595:AAEW9zXxj1OAC5F__o5PtX2qpJNDwdYiJ2k")
+bot = telebot.TeleBot(Token)
 
 db = Database("database.db")
 
