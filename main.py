@@ -161,6 +161,7 @@ def bot_message(message):
                 db.set_signup(message.chat.id, "done")
                 panel(message.chat.id, "Данные сохранены успешно")
 
+#-------------------------------------------------------
 
         elif db.get_is_content(message.chat.id) == "1":
             if len(message.text) > 1000:
@@ -172,7 +173,8 @@ def bot_message(message):
                 db.set_is_content(message.chat.id, False)
                 panel(message.chat.id, "отзыв успешно сохранен")
 
-        
+#-------------------------------------------------------
+
         elif db.get_signup_admin(message.chat.id) == "installation":
 
             if message.text == "89677156771":
@@ -183,6 +185,8 @@ def bot_message(message):
                 db.set_signup_admin(message.chat.id, "setadminpassword")
                 panel(message.chat.id, "Пароль неверный")
 
+#-------------------------------------------------------
+
         elif db.get_flag_add_topic(message.chat.id) == "1":
             db.set_flag_add_topic(message.chat.id, False)
             if len(message.text) > 60:
@@ -192,6 +196,8 @@ def bot_message(message):
             else:
                 db.add_topic_title(message.text)
                 panel(message.chat.id, "новое мероприятие сохранено")
+
+#-------------------------------------------------------
 
         else:
             bot.send_message(message.chat.id, "Некорректный ввод")
@@ -208,6 +214,7 @@ def save_btn(call):
       db.set_signup(message.chat.id, "setnickname")
       bot.send_message(chat_id, f'введите ФИО')
 
+#-------------------------------------------------------
 
    elif call.data == 'admin_panel':
       if db.get_is_admin(chat_id) == "1":
@@ -216,16 +223,20 @@ def save_btn(call):
          bot.send_message(chat_id, f'Введите пароль')
          db.set_signup_admin(chat_id, "installation") 
 
+#-------------------------------------------------------
 
    elif call.data == 'keyboard_back':
       chat_id = message.chat.id
       panel(message.chat.id, "Назад")
 
+#-------------------------------------------------------
 
    elif call.data.split('|')[0] == 'admin_delete':
        tp_id = db.get_topic_id(call.data.split('|')[1])
        db.delete_topic(tp_id)
        bot.send_message(message.chat.id, 'мероприятие удалено', reply_markup=nav.keyboard3)
+
+#-------------------------------------------------------
 
    elif call.data.split('|')[0] == 'user_events':
        event = db.get_topic_id(call.data.split('|')[1])
@@ -235,7 +246,6 @@ def save_btn(call):
        bot.send_message(message.chat.id, 'напишите отзыв о мероприятии')
        
        
-
 #---------------------------------------------------------------------------------------------------------------------------------------------
 
 def panel(chat_id, text):
