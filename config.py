@@ -1,2 +1,0 @@
-Token = "7142549161:AAEUBpxnMEnIjdWRnv_uWu8HFNMNg5J69Us"
-Admin_Password = "89677156771"
