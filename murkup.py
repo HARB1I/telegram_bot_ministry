@@ -1,7 +1,5 @@
 import telebot
-from db import Database
 
-db = Database("database.db")
 
 #главное меню-----------------------------------------------------------------------------------------
 button_save = telebot.types.InlineKeyboardButton(text="ПРОФИЛЬ")
