@@ -1,0 +1,5 @@
+python3 -m venv myenv      это только если оно не создано
+
+source myenv/bin/activate       активация окружения
+
+pip install telebot     установка библиотек использовать в окружении
