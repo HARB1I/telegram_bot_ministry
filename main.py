@@ -47,7 +47,7 @@ def bot_message(message):
         case "СПИСОК":
             if db.get_is_admin(message.chat.id) == "1":
                 kb = db.get_topic_title()
-                kb_topics = Keyboa(items=kb, items_in_row=3).keyboard
+                kb_topics = Keyboa(items=kb, items_in_row=2).keyboard
                 bot.send_message(
                     message.chat.id, reply_markup=kb_topics, text="список мероприятий"
                 )
@@ -71,7 +71,7 @@ def bot_message(message):
                 items=kb,
                 copy_text_to_callback=True,
                 front_marker="user_events|",
-                items_in_row=3,
+                items_in_row=2,
             ).keyboard
             bot.send_message(
                 message.chat.id,
@@ -149,7 +149,7 @@ def bot_message(message):
                     items=kb,
                     copy_text_to_callback=True,
                     front_marker="admin_delete|",
-                    items_in_row=3,
+                    items_in_row=2,
                 ).keyboard
                 bot.send_message(
                     message.chat.id,
